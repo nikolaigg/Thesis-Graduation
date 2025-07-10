@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Supervisions</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/my-supervisions.css}" />
+
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<main class="container">
+    <div th:replace="fragments/teacher-sidebar :: sidebar('my-supervisions')"></div>
+
+    <section>
+        <h2>My Supervised Theses</h2>
+
+        <div th:if="${theses.isEmpty()}">
+            <p>You are not supervising any theses currently.</p>
+        </div>
+
+        <table th:if="${!theses.isEmpty()}">
+            <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Faculty Number</th>
+                <th>Thesis Title</th>
+                <th>Thesis Description</th>
+                <th>Upload Date</th>
+                <th>Review Assessment</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="thesis : ${theses}">
+                <td th:text="${thesis.studentName}">Student Name</td>
+                <td th:text="${thesis.studentFacultyNumber}">Faculty Number</td>
+                <td th:text="${thesis.title}">Thesis Title</td>
+                <td th:text="${thesis.description}">Thesis Description</td>
+                <td th:text="${thesis.uploadDate}">Upload Date</td>
+                <td th:text="${thesis.reviewAssessment}">Review Assessment</td>
+                <td th:text="${thesis.status}">Status</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

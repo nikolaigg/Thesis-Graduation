@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/application/my-applications.css}" />
+
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+
+<div class="container">
+
+    <div th:replace="fragments/teacher-sidebar :: sidebar('my-applications')"></div>
+
+    <main>
+        <h2>My Applications</h2>
+        <div th:if="${myApplications.isEmpty()}">
+            <p>You have not submitted any applications yet.</p>
+        </div>
+        <ul class="app-list" th:if="${!myApplications.isEmpty()}">
+            <li th:each="app : ${myApplications}">
+                <strong th:text="${app.topic}">Thesis topic</strong><br />
+                Student: <span th:text="${app.studentName}">Student Name</span><br />
+                Status: <span th:text="${app.status}">Status</span><br />
+
+                <div style="display: flex; gap: 10px;">
+                    <form th:action="@{/teacher/application/view/{id}(id=${app.id})}" method="get">
+                        <button type="submit">View</button>
+                    </form>
+
+                    <form th:if="${'REJECTED'.equals(app.status)}"
+                          th:action="@{/teacher/application/update/{id}(id=${app.id})}" method="get">
+                        <button type="submit">Update</button>
+                    </form>
+
+                    <form th:if="${!'APPROVED'.equals(app.status)}"
+                          th:action="@{/teacher/application/delete/{id}(id=${app.id})}" method="get">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+
+            </li>
+        </ul>
+
+    </main>
+
+</div>
+
+</body>
+</html>

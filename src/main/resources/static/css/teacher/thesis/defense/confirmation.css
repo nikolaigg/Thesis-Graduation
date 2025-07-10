@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 60px auto 40px;
+    gap: 30px;
+    padding: 0 20px;
+}
+.schedule-container {
+    max-width: 700px;
+    margin: 60px auto 40px;
+    padding: 25px 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #374151;
+}
+
+.schedule-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #1e40af;
+}
+
+.schedule-container h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.schedule-container p,
+.schedule-container ul {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-left: 15px;
+}
+
+.schedule-container ul {
+    list-style-type: disc;
+    margin-bottom: 25px;
+}
+
+.schedule-container form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-primary:focus {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}

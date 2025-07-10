@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="nav(activeTab)">
+<head>
+    <link rel="stylesheet" th:href="@{/css/fragments/navbar.css}" />
+</head>
+<body>
+<nav>
+    <a th:classappend="${activeTab == 'students'} ? 'active'" th:href="@{/admin/students}">Students</a>
+    <a th:classappend="${activeTab == 'teachers'} ? 'active'" th:href="@{/admin/teachers}">Teachers</a>
+    <a th:classappend="${activeTab == 'departments'} ? 'active'" th:href="@{/admin/departments}">Departments</a>
+</nav>
+<div th:replace="fragments/logout :: logoutForm"></div>
+</body>
+</html>

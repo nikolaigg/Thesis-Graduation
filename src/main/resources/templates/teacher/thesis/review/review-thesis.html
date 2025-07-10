@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Review Thesis</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/thesis/review/review-thesis.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<main class="container">
+    <div th:replace="fragments/teacher-sidebar :: sidebar('pendingReview')"></div>
+
+    <section class="thesis-info">
+        <h2>Thesis Details</h2>
+        <p><strong>Student:</strong> <span th:text="${thesis.studentName}">Student Name</span></p>
+        <p><strong>Faculty Number:</strong> <span th:text="${thesis.studentFacultyNumber}">123456</span></p>
+        <p><strong>Title:</strong> <span th:text="${thesis.title}">Thesis Title</span></p>
+        <p><strong>Description:</strong> <span th:text="${thesis.description}">Thesis Description</span></p>
+        <p><strong>Upload Date:</strong> <span th:text="${thesis.uploadDate}">Upload Date</span></p>
+        <p><strong>Supervisor:</strong> <span th:text="${thesis.supervisorName}">Supervisor</span></p>
+    </section>
+
+    <section class="review-form">
+        <h2>Submit Review</h2>
+        <form th:action="@{/teacher/thesis/review}" method="post" th:object="${review}">
+            <input type="hidden" th:field="*{thesisId}" />
+
+            <label for="reviewText">Review Text:</label>
+            <textarea id="reviewText" th:field="*{review}" rows="6" placeholder="Detailed review..."></textarea>
+
+            <label>Decision:</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" th:field="*{status}" value="POSITIVE" /> Positive Assessment
+                </label>
+                <label>
+                    <input type="radio" th:field="*{status}" value="NEGATIVE" /> Negative Assessment
+                </label>
+            </div>
+
+
+
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>

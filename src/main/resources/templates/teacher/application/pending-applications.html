@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/application/pending-applications.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+
+    <div th:replace="fragments/teacher-sidebar :: sidebar('pending')"></div>
+
+    <main>
+        <h2>Pending Applications</h2>
+        <div th:if="${applications.isEmpty()}">
+            <p>No pending applications yet.</p>
+        </div>
+        <ul class="app-list" th:if="${!applications.isEmpty()}">
+            <li th:each="app : ${applications}">
+                <strong th:text="${app.topic}">Thesis topic</strong><br />
+
+                <div class="app-info">
+                    <label>Student:</label>
+                    <span th:text="${app.studentName}">Student Name</span>
+                </div>
+
+                <div class="app-info">
+                    <label>Teacher:</label>
+                    <span th:text="${app.teacherName}">Teacher Name</span>
+                </div>
+
+                <div class="app-buttons">
+                    <form th:action="@{/teacher/applications/approve/{id}(id=${app.id})}" method="post">
+                        <button type="submit">Approve</button>
+                    </form>
+
+                    <form th:action="@{/teacher/applications/reject/{id}(id=${app.id})}" method="post">
+                        <button type="submit">Reject</button>
+                    </form>
+
+                    <form th:action="@{/teacher/application/view/{id}(id=${app.id})}" method="get">
+                        <button type="submit">View</button>
+                    </form>
+                </div>
+            </li>
+
+
+        </ul>
+    </main>
+
+</div>
+
+</body>
+</html>

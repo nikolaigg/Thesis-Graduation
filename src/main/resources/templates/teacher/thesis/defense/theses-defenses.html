@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thesis Defenses</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/thesis/defense/theses-defenses.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+    <div th:replace="fragments/teacher-sidebar :: sidebar('defense')"></div>
+
+    <main class="main-content">
+
+        <section class="defense-today">
+            <h2>Thesis Defenses Today: <span th:text="${date}">Date</span></h2>
+
+            <div th:each="defense : ${defensesToday}">
+                <div th:each="thesis : ${defense.theses}" class="thesis-entry">
+                    <h3 th:text="${thesis.title}">Thesis Title</h3>
+                    <p><strong>Student:</strong> <span th:text="${thesis.studentName}">Student Name</span></p>
+
+                    <form th:if="${thesis.grade == null}" th:action="@{/teacher/grade/{id}(id=${thesis.id})}" method="get" style="display:inline">
+                        <button type="submit" class="grade-btn">Grade Thesis</button>
+                    </form>
+
+                    <span th:if="${thesis.grade != null}" class="graded-label" style="color:green; font-weight:bold;">
+            Grade: <span th:text="${thesis.grade}"></span>
+        </span>
+                </div>
+            </div>
+
+            <div th:if="${defensesToday == null or defensesToday.isEmpty()}">
+                <p>No defenses scheduled for today.</p>
+            </div>
+        </section>
+
+        <section class="other-defenses">
+            <h2>Upcoming Scheduled Defenses</h2>
+
+            <div th:each="defense : ${defensesNotToday}" class="session-block">
+                <h3 th:text="${defense.defenseDate}">Date</h3>
+                <div th:each="thesis : ${defense.theses}" class="thesis-entry">
+                    <h4 th:text="${thesis.title}">Thesis Title</h4>
+                    <p><strong>Student:</strong> <span th:text="${thesis.studentName}">Student Name</span></p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+</div>
+
+</body>
+</html>

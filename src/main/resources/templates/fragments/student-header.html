@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<div th:fragment="studentHeader(student)">
+    <header>
+        <h1>
+            <span th:text="${student.name}">Student Name</span>
+        </h1>
+        <span class="department" th:text="${student.departmentName}">Department Name</span>
+
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <input type="submit" value="Logout" />
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        </form>
+    </header>
+</div>
+</body>
+</html>

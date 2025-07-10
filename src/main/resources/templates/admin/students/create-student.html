@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Teacher</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+</head>
+<body>
+<div class="form-container">
+    <h2>Create Student</h2>
+    <form th:action="@{/admin/students/create}" th:object="${student}" method="post">
+
+        <div class="form-group">
+            <label for="name">Student Name:</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter student name" />
+            <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+            <label>Faculty Number:</label>
+            <input type="text" th:field="*{facultyNumber}" />
+            <div th:if="${#fields.hasErrors('facultyNumber')}" th:errors="*{facultyNumber}" class="error"></div>
+
+            <label>Department:</label>
+            <select th:field="*{departmentId}">
+                <option value="" disabled selected>Select department</option>
+                <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.name}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('departmentId')}" th:errors="*{departmentId}" class="error"></div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" th:field="*{user.username}" placeholder="Enter username" />
+            <div th:if="${#fields.hasErrors('user.username')}" th:errors="*{user.username}" class="error"></div>
+
+            <label>Password:</label>
+            <input type="password" th:field="*{user.password}" placeholder="Enter password" />
+            <div th:if="${#fields.hasErrors('user.password')}" th:errors="*{user.password}" class="error"></div>
+        </div>
+
+        <button type="submit">Create</button>
+    </form>
+
+</div>
+</body>
+</html>

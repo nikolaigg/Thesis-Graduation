@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Thesis Application</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/application/edit-application.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+    <div th:replace="fragments/teacher-sidebar :: sidebar('my-applications')"></div>
+
+    <main>
+        <h2>Edit Thesis Application</h2>
+
+        <form th:action="@{/teacher/application/update/{id}(id=${applicationId})}" th:object="${updateApplication}" method="post">
+            <div>
+                <label for="topic">Topic:</label>
+                <input type="text" id="topic" th:field="*{topic}"  />
+                <div class="error" th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></div>
+            </div>
+
+            <div>
+                <label for="objective">Objective:</label>
+                <textarea id="objective" th:field="*{objective}" ></textarea>
+                <div class="error" th:if="${#fields.hasErrors('objective')}" th:errors="*{objective}"></div>
+            </div>
+
+            <div>
+                <label for="tasks">Tasks:</label>
+                <textarea id="tasks" th:field="*{tasks}" ></textarea>
+                <div class="error" th:if="${#fields.hasErrors('tasks')}" th:errors="*{tasks}"></div>
+            </div>
+
+            <div>
+                <label for="usedTechnologies">Used Technologies:</label>
+                <textarea id="usedTechnologies" th:field="*{usedTechnologies}" ></textarea>
+                <div class="error" th:if="${#fields.hasErrors('usedTechnologies')}" th:errors="*{usedTechnologies}"></div>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit">Save</button>
+                <a th:href="@{/teacher/application/my-applications}" class="button">Cancel</a>
+            </div>
+        </form>
+    </main>
+</div>
+
+</body>
+</html>

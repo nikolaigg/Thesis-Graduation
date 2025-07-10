@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>View Application</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/application/view-application.css}" />
+
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+    <div th:replace="fragments/teacher-sidebar :: sidebar('my-applications')"></div>
+
+    <main>
+        <h2>View Thesis Application</h2>
+
+        <div class="application-details">
+            <p><strong>Topic:</strong> <span th:text="${ViewApplication.topic}">Topic</span></p>
+            <p><strong>Objective:</strong> <span th:text="${ViewApplication.objective}">Objective</span></p>
+            <p><strong>Tasks:</strong> <span th:text="${ViewApplication.tasks}">Tasks</span></p>
+            <p><strong>Used technologies:</strong> <span th:text="${ViewApplication.usedTechnologies}">Used technologies</span></p>
+            <p><strong>Student:</strong> <span th:text="${ViewApplication.studentName}">Student Name</span></p>
+            <p><strong>Teacher:</strong> <span th:text="${ViewApplication.teacherName}">Teacher Name</span></p>
+            <p><strong>Status:</strong> <span th:text="${ViewApplication.status}">Status</span></p>
+        </div>
+
+        <a th:href="@{/teacher/application/my-applications}" class="button">Back</a>
+    </main>
+</div>
+
+</body>
+</html>

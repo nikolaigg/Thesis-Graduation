@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    margin-top: 60px;
+    padding: 30px;
+    background-color: #f9fafb;
+    min-height: calc(100vh - 60px);
+}
+
+main {
+    flex-grow: 1;
+    margin-left: 240px;
+    padding-right: 20px;
+}
+
+
+main h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1E3A8A;
+    margin-bottom: 24px;
+}
+
+
+main p {
+    font-size: 1rem;
+    color: #6B7280;
+}
+
+
+.thesis-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.thesis-list li {
+    background-color: white;
+    border: 1px solid #E5E7EB;
+    border-left: 5px solid #F59E0B;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.thesis-list li strong {
+    font-size: 1.1rem;
+    color: #111827;
+}
+
+.thesis-list li span {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+.thesis-list li form {
+    margin-top: 12px;
+}
+
+.thesis-list button {
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.thesis-list button:hover {
+    background-color: #2563EB;
+}

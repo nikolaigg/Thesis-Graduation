@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar(activeTab)">
+<body>
+<nav class="sidebar">
+    <ul>
+
+        <li class="parent-tab">
+            <span class="parent-label">My Section</span>
+            <ul class="subtabs">
+                <li><a th:classappend="${activeTab == 'create'} ? 'active'" th:href="@{/teacher/create}">+ New Application</a></li>
+                <li><a th:classappend="${activeTab == 'my-applications'} ? 'active'" th:href="@{/teacher/application/my-applications}">My Applications</a></li>
+                <li><a th:classappend="${activeTab == 'my-supervisions'} ? 'active'" th:href="@{/teacher/my-supervisions}">Thesis Supervisions</a></li>
+            </ul>
+        </li>
+
+        <li class="parent-tab">
+            <span class="parent-label">Applications</span>
+            <ul class="subtabs">
+                <li><a th:classappend="${activeTab == 'pending'} ? 'active'" th:href="@{/teacher/application/pending-applications}">Pending Applications</a></li>
+                <li><a th:classappend="${activeTab == 'approved'} ? 'active'" th:href="@{/teacher/application/approved-applications}">Approved Applications</a></li>
+            </ul>
+        </li>
+
+        <li class="parent-tab">
+            <span class="parent-label">Thesis</span>
+            <ul class="subtabs">
+                <li><a th:classappend="${activeTab == 'pendingReview'} ? 'active'" th:href="@{/teacher/theses-pending-review}">Theses Pending Review</a></li>
+                <li><a th:classappend="${activeTab == 'thesesDefence'} ? 'active'" th:href="@{/teacher/theses-pending-defence}">Theses Pending Defence</a></li>
+                <li><a th:classappend="${activeTab == 'defence'} ? 'active'" th:href="@{/teacher/theses-defenses}">Theses Defences</a></li>
+                <li><a th:classappend="${activeTab == 'graded'} ? 'active'" th:href="@{/teacher/thesis/grading/graded-theses}">Graded Theses</a></li>
+            </ul>
+        </li>
+
+        <li><a th:classappend="${activeTab == 'reports'} ? 'active'" th:href="@{/reports}">Reports</a></li>
+    </ul>
+</nav>
+</body>
+</html>

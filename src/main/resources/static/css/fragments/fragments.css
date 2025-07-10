@@ -1,0 +1,146 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #1E3A8A;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header h1 .head-of-department {
+    font-weight: 700;
+    color: #34D399;
+    font-size: 1rem;
+}
+
+header .department {
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: 12px;
+    opacity: 0.85;
+}
+
+header form {
+    margin: 0;
+}
+
+header input[type="submit"] {
+    background-color: #2563EB;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+header input[type="submit"]:hover {
+    background-color: #1D4ED8;
+}
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 240px;
+    height: calc(100% - 60px);
+    background-color: #1E3A8A;
+    color: white;
+    padding: 20px 15px;
+    overflow-y: auto;
+    border-right: 3px solid #2563EB;
+    box-sizing: border-box;
+    font-size: 1rem;
+    z-index: 900;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .parent-tab {
+    margin-bottom: 20px;
+}
+
+.sidebar .parent-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: block;
+    color: #A5B4FC;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: default;
+}
+
+.sidebar .subtabs {
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.sidebar .subtabs li {
+    margin-bottom: 8px;
+}
+
+.sidebar a {
+    color: #D1D5DB;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.sidebar a:hover {
+    background-color: #2563EB;
+    color: white;
+}
+
+.sidebar a.active {
+    background-color: #2563EB;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 0 8px 1px #2563EB;
+}
+
+.main-content {
+    margin-left: 240px;
+    padding: 80px 30px 30px 30px;
+    background-color: #f9fafb;
+    min-height: calc(100vh - 60px);
+}

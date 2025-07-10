@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Reports</title>
+  <link rel="stylesheet" th:href="@{/css/reports.css}" />
+
+</head>
+<body>
+<h1>Application Reports</h1>
+
+<form th:action="@{/reports/approved}" method="post">
+  <button type="submit">Load All Approved</button>
+</form>
+
+<form th:action="@{/reports/approved-and-supervisor}" method="post">
+  <label for="teacherId">Select Supervisor:</label>
+  <select name="teacherId" id="teacherId" required>
+    <option value="" disabled selected>-- Choose a teacher --</option>
+    <option th:each="teacher : ${teacherList}"
+            th:value="${teacher.id}"
+            th:text="${teacher.name}">
+    </option>
+  </select>
+  <button type="submit">Load Approved for Supervisor</button>
+</form>
+
+<form th:action="@{/reports/count-grade}" method="post" style="margin-top: 20px;">
+  <label for="teacherIdGrade">Select Supervisor for Grade Count:</label>
+  <select name="teacherId" id="teacherIdGrade" required>
+    <option value="" disabled selected>-- Choose a teacher --</option>
+    <option th:each="teacher : ${teacherList}"
+            th:value="${teacher.id}"
+            th:text="${teacher.name}">
+    </option>
+  </select>
+  <button type="submit">Count Students with Grade > 2</button>
+</form>
+
+
+<div th:if="${approvedTheses}">
+  <h2>All Approved Applications</h2>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Student Name</th>
+      <th>Supervisor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="app : ${approvedTheses}">
+      <td th:text="${app.topic}"></td>
+      <td th:text="${app.studentName}"></td>
+      <td th:text="${app.teacherName}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:if="${supervisorApprovedTheses}">
+  <h2>Approved Applications by Selected Supervisor</h2>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Student Name</th>
+      <th>Supervisor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="app : ${supervisorApprovedTheses}">
+      <td th:text="${app.topic}"></td>
+      <td th:text="${app.studentName}"></td>
+      <td th:text="${app.teacherName}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:if="${studentsCount != null}" style="margin-top: 10px;">
+  <h3>Number of students with grade > 2: <span th:text="${studentsCount}"></span></h3>
+</div>
+
+<div style="margin-top: 20px;">
+  <a th:href="@{${backLink}}">
+    <button type="button">Back</button>
+  </a>
+</div>
+</body>
+</html>

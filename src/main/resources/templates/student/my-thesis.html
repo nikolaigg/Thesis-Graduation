@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Thesis</title>
+  <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+  <link rel="stylesheet" th:href="@{/css/student/my-thesis.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/student-header :: studentHeader(${student})"></div>
+
+<main class="container">
+  <div th:replace="fragments/student-sidebar :: sidebar('my-thesis')"></div>
+  <h1>My thesis</h1>
+  <div th:if="${studentApplication != null}">
+
+    <div th:if="${studentApplication.status == 'APPROVED'}" class="approved-thesis">
+      <h2>Thesis Application Info</h2>
+      <p><strong>Topic:</strong> <span th:text="${studentApplication.topic}">Topic</span></p>
+      <p><strong>Objective:</strong> <span th:text="${studentApplication.objective}">Objective</span></p>
+      <p><strong>Tasks:</strong> <span th:text="${studentApplication.tasks}">Tasks</span></p>
+      <p><strong>Used technologies:</strong> <span th:text="${studentApplication.usedTechnologies}">Used technologies</span></p>
+      <p><strong>Supervisor:</strong> <span th:text="${studentApplication.teacherName}">Teacher Name</span></p>
+
+      <div th:if="${thesis == null}">
+        <form th:action="@{/student/thesis/upload}" method="get">
+          <button type="submit">Upload Thesis</button>
+        </form>
+      </div>
+
+      <div th:if="${thesis != null}">
+        <h2>Your Uploaded Thesis</h2>
+        <p><strong>Title:</strong> <span th:text="${thesis.title}">Title</span></p>
+        <p><strong>Description:</strong> <span th:text="${thesis.description}">Description</span></p>
+        <p><strong>Upload Date:</strong> <span th:text="${thesis.uploadDate}">Date</span></p>
+        <p><strong>Assessment:</strong> <span th:text="${thesis.status}">Assessment</span></p>
+        <p><strong>Grade:</strong>
+          <span th:text="${thesis.grade != null ? thesis.grade : 'Not graded'}">Grade</span>
+        </p>
+      </div>
+    </div>
+
+    <div th:if="${studentApplication.status != 'APPROVED'}" class="not-approved-thesis">
+      <p>You currently cannot upload your thesis. Your application may not be approved yet.</p>
+    </div>
+  </div>
+
+  <div th:if="${studentApplication == null}">
+    <p>You cannot upload a thesis yet.</p>
+  </div>
+
+</main>
+
+</body>
+</html>

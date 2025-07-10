@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Grade Thesis</title>
+  < <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+  < <link rel="stylesheet" th:href="@{/css/teacher/thesis/grading/grading.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+  <div th:replace="fragments/teacher-sidebar :: sidebar('defense')"></div>
+
+  <main class="main-content grade-page">
+
+    <h2>Grade Thesis</h2>
+
+    <section class="section-application">
+      <h3>Application Information</h3>
+      <p><strong>Topic:</strong> <span th:text="${thesisApplication.topic}">Topic</span></p>
+      <p><strong>Objective:</strong> <span th:text="${thesisApplication.objective}">Objective</span></p>
+      <p><strong>Tasks:</strong> <span th:text="${thesisApplication.tasks}">Tasks</span></p>
+      <p><strong>Used technologies:</strong> <span th:text="${thesisApplication.usedTechnologies}">Used technologies</span></p>
+    </section>
+
+    <section class="section-thesis">
+      <h3>Thesis Details</h3>
+      <p><strong>Title:</strong> <span th:text="${thesis.title}">Thesis Title</span></p>
+      <p><strong>Description:</strong> <span th:text="${thesis.description}">Description</span></p>
+      <p><strong>Student name:</strong> <span th:text="${thesis.studentName}">Name</span></p>
+      <p><strong>Supervisor:</strong> <span th:text="${thesis.supervisorName}">Name</span></p>
+    </section>
+
+    <section class="section-review">
+      <h3>Thesis Review</h3>
+      <p><strong>Review:</strong> <span th:text="${review.review}">Review</span></p>
+      <p><strong>Review Assessment:</strong> <span th:text="${review.assessment}">Assessment</span></p>
+    </section>
+
+    <section class="section-grade">
+      <h3>Submit Grade</h3>
+      <form th:action="@{/teacher/thesis/grade/{id}(id=${thesis.id})}" method="post">
+        <label for="grade">Select Grade:</label>
+        <select id="grade" name="grade" required>
+          <option value="" disabled selected>Select a grade</option>
+          <option value="6">6</option>
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+        </select>
+        <button type="submit">Submit Grade</button>
+      </form>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Thesis Application</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/teacher/application/create-application.css}">
+</head>
+<body>
+<div class="form-container">
+    <h2>New Thesis Application</h2>
+    <form th:action="@{/teacher/create}" th:object="${application}" method="post">
+        <label for="topic">Topic:</label>
+        <input type="text" id="topic" th:field="*{topic}"/>
+        <div class="error" th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></div>
+
+        <label for="objective">Objective:</label>
+        <input type="text" id="objective" th:field="*{objective}"/>
+        <div class="error" th:if="${#fields.hasErrors('objective')}" th:errors="*{objective}"></div>
+
+        <label for="tasks">Tasks:</label>
+        <input type="text" id="tasks" th:field="*{tasks}"/>
+        <div class="error" th:if="${#fields.hasErrors('tasks')}" th:errors="*{tasks}"></div>
+
+        <label for="usedTech">Used Technologies:</label>
+        <input type="text" id="usedTech" th:field="*{usedTechnologies}"/>
+        <div class="error" th:if="${#fields.hasErrors('usedTechnologies')}" th:errors="*{usedTechnologies}"></div>
+
+        <label>Student:</label>
+        <select th:field="*{studentId}">
+            <option th:each="student : ${students}"
+                    th:value="${student.id}"
+                    th:text="${student.name}">
+            </option>
+        </select>
+        <div class="error" th:if="${#fields.hasErrors('studentId')}" th:errors="*{studentId}"></div>
+
+        <button type="submit">Create</button>
+        <a th:href="@{/teacher/application/my-applications}">Back</a>
+    </form>
+</div>
+</body>
+</html>

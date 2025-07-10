@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
+}
+
+main {
+    flex: 1;
+    padding: 30px 40px;
+    background-color: #f4f6f8;
+    min-height: calc(100vh - 60px);
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    margin-left: 240px;
+    box-sizing: border-box;
+}
+
+main h2 {
+    font-size: 2rem;
+    color: #1e40af;
+    margin-bottom: 24px;
+    font-weight: 700;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 8px;
+}
+
+main p {
+    font-size: 1.1rem;
+    color: #374151;
+    padding: 20px 15px;
+    background: #e0e7ff;
+    border-radius: 6px;
+    max-width: 600px;
+}
+
+.app-list {
+    list-style-type: none;
+    max-width: 700px;
+    padding-left: 0;
+    margin: 0;
+}
+
+
+.app-list li {
+    background: white;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+    line-height: 1.5;
+    font-size: 1rem;
+    color: #1f2937;
+}
+
+
+.app-list li strong {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #1e40af;
+}
+
+
+.app-list li form {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+
+.app-list li button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.app-list li button:hover {
+    background-color: #1e40af;
+}
+
+
+.app-list li form button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #93c5fd;
+}

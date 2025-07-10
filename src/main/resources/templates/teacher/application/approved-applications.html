@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+  <link rel="stylesheet" th:href="@{/css/teacher/application/approved-applications.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+
+  <div th:replace="fragments/teacher-sidebar :: sidebar('approved')"></div>
+
+  <main>
+    <h2>Approved Applications</h2>
+    <div th:if="${applications.isEmpty()}">
+      <p>No approved applications yet.</p>
+    </div>
+    <ul class="app-list" th:if="${!applications.isEmpty()}">
+      <li th:each="app : ${applications}">
+        <strong th:text="${app.topic}">Thesis topic</strong><br />
+        Student: <span th:text="${app.studentName}">Student Name</span><br />
+        Teacher: <span th:text="${app.teacherName}">Teacher Name</span><br />
+
+        <form th:action="@{/teacher/application/view/{id}(id=${app.id})}" method="get" style="display:inline">
+          <button type="submit">View</button>
+        </form>
+      </li>
+
+    </ul>
+  </main>
+
+</div>
+
+</body>
+</html>

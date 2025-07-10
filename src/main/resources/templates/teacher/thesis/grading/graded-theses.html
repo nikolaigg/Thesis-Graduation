@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Graded Theses</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/thesis/grading/graded-theses.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+    <div th:replace="fragments/teacher-sidebar :: sidebar('graded')"></div>
+</div>
+
+
+<main class="graded-theses-container">
+    <h2>Graded Theses</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Student Name</th>
+            <th>Faculty Number</th>
+            <th>Supervisor</th>
+            <th>Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="thesis : ${gradedTheses}">
+            <td th:text="${thesis.title}">Thesis Title</td>
+            <td th:text="${thesis.studentName}">Student Name</td>
+            <td th:text="${thesis.studentFacultyNumber}">Student Faculty Number</td>
+            <td th:text="${thesis.supervisorName}">Supervisor Name</td>
+            <td th:text="${thesis.grade}">Grade</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

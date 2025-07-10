@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Department</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+</head>
+<body>
+<div class="form-container">
+    <h2>Edit Department</h2>
+    <form th:action="@{/admin/departments/edit/{id}(id=${departmentId})}" th:object="${department}" method="post">
+        <div class="form-group">
+            <label for="name">Department Name:</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter department name" />
+            <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="headOfDepartment">Head of Department (optional):</label>
+            <select id="headOfDepartment" th:field="*{headOfDepartmentId}">
+                <option th:value="${null}" disabled th:selected="${department.headOfDepartmentId == null}">-- Select a teacher --</option>
+                <option th:each="teacher : ${teachers}"
+                        th:value="${teacher.id}"
+                        th:text="${teacher.name}"
+                        th:selected="${teacher.id == department.headOfDepartmentId}">
+                </option>
+            </select>
+            <div class="error" th:if="${#fields.hasErrors('headOfDepartmentId')}" th:errors="*{headOfDepartmentId}"></div>
+        </div>
+
+        <button type="submit">Update</button>
+        <a th:href="@{/admin/departments}">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

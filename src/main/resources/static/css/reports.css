@@ -1,0 +1,82 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 40px auto;
+    max-width: 900px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+select, button {
+    padding: 8px 14px;
+    border-radius: 4px;
+    border: 1.5px solid #bdc3c7;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+select:focus, button:hover {
+    border-color: #2980b9;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 0 5px #2980b9;
+}
+
+button {
+    background-color: #2980b9;
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+button:active {
+    background-color: #1f6391;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #2980b9;
+    color: white;
+}
+
+thead th {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #f0f8ff;
+}

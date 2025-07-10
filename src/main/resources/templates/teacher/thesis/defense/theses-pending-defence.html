@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Theses Pending Defense</title>
+  <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+  <link rel="stylesheet" th:href="@{/css/teacher/thesis/defense/theses-pending-defense.css}" />
+</head>
+<body>
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+  <div th:replace="fragments/teacher-sidebar :: sidebar('thesesDefence')"></div>
+
+  <main class="thesis-page">
+    <h1>Theses Pending Defense</h1>
+
+    <div th:if="${#lists.isEmpty(theses)}">
+      <p>No theses pending defense at the moment.</p>
+    </div>
+
+    <div th:if="${!#lists.isEmpty(theses)}">
+      <div th:each="thesis : ${theses}">
+        <div class="thesis-card">
+          <p><strong>Student:</strong> <span th:text="${thesis.studentName}">Student Name</span></p>
+          <p><strong>Faculty Number:</strong> <span th:text="${thesis.studentFacultyNumber}">123456</span></p>
+          <p><strong>Title:</strong> <span th:text="${thesis.title}">Thesis Title</span></p>
+          <p><strong>Description:</strong> <span th:text="${thesis.description}">Thesis Description</span></p>
+          <p><strong>Upload Date:</strong> <span th:text="${thesis.uploadDate}">Upload Date</span></p>
+          <p><strong>Supervisor:</strong> <span th:text="${thesis.supervisorName}">Supervisor</span></p>
+        </div>
+        <hr/>
+      </div>
+
+      <form th:if="${teacher.headOfDepartment}"
+            th:action="@{defense/schedule/setup}"
+            method="get">
+        <button type="submit">Schedule Defenses</button>
+      </form>
+    </div>
+  </main>
+</div>
+</body>
+</html>

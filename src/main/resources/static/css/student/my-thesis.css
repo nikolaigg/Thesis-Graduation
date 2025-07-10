@@ -1,0 +1,74 @@
+
+.container {
+    margin-left: 240px;
+    padding: 80px 30px 30px 30px;
+    min-height: calc(100vh - 60px);
+    background-color: #f9fafb;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.approved-thesis {
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+.approved-thesis h2 {
+    color: #1E3A8A;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.approved-thesis p {
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-size: 1rem;
+}
+
+.approved-thesis p strong {
+    color: #2563EB;
+    margin-right: 5px;
+}
+
+
+.approved-thesis form button {
+    background-color: #2563EB;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.approved-thesis form button:hover {
+    background-color: #1D4ED8;
+}
+
+
+.approved-thesis div h2 {
+    margin-top: 25px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2563EB;
+}
+
+
+.not-approved-thesis {
+    max-width: 600px;
+    margin-top: 30px;
+    background-color: #fff3f3;
+    border-left: 5px solid #ef4444;
+    padding: 15px 20px;
+    border-radius: 6px;
+    color: #b91c1c;
+    font-weight: 600;
+    font-size: 1rem;
+}

@@ -1,0 +1,47 @@
+.graded-theses-container {
+    max-width: 900px;
+    margin: 60px auto 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.graded-theses-container h2 {
+    color: #1e40af;
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.graded-theses-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.graded-theses-container thead {
+    background-color: #2563eb;
+    color: white;
+}
+
+.graded-theses-container thead th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.graded-theses-container tbody tr:nth-child(even) {
+    background-color: #f3f4f6;
+}
+
+.graded-theses-container tbody tr:hover {
+    background-color: #e0e7ff;
+    cursor: default;
+}
+
+.graded-theses-container tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e5e7eb;
+}

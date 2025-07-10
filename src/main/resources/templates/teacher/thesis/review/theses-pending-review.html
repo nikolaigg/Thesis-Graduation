@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Teacher Dashboard - Theses</title>
+    <link rel="stylesheet" th:href="@{/css/fragments/fragments.css}" />
+    <link rel="stylesheet" th:href="@{/css/teacher/thesis/review/pending-review.css}" />
+</head>
+<body>
+
+<div th:replace="fragments/teacher-header :: teacherHeader(${teacher})"></div>
+
+<div class="container">
+
+    <div th:replace="fragments/teacher-sidebar :: sidebar('pendingReview')"></div>
+
+    <main>
+        <h2>Theses Pending Review</h2>
+        <div th:if="${theses.isEmpty()}">
+            <p>No theses assigned for review.</p>
+        </div>
+        <ul class="thesis-list" th:if="${!theses.isEmpty()}">
+            <li th:each="thesis : ${theses}">
+                <strong th:text="${thesis.title}">Thesis Title</strong><br />
+                Description: <span th:text="${thesis.description}">Description</span><br />
+                Student: <span th:text="${thesis.studentName}">Student Name</span><br />
+                Student Faculty number: <span th:text="${thesis.studentFacultyNumber}">Student Faculty number</span><br />
+                Supervisor: <span th:text="${thesis.supervisorName}">Supervisor Name</span><br />
+                Uploaded on: <span th:text="${thesis.uploadDate}">Upload Date</span><br />
+
+                <form th:action="@{/teacher/thesis/review/{id}(id=${thesis.id})}" method="get" style="display:inline;">
+                    <button type="submit">Write Review</button>
+                </form>
+
+            </li>
+        </ul>
+    </main>
+
+</div>
+
+</body>
+</html>

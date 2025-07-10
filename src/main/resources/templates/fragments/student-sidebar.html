@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar(activeTab)">
+<body>
+<nav class="sidebar">
+  <ul>
+    <li><a th:classappend="${activeTab == 'my-thesis'} ? 'active'" th:href="@{/student/my-thesis}">My Thesis</a></li>
+    <li><a th:classappend="${activeTab == 'approved'} ? 'active'" th:href="@{/student/approved-applications-student-view}">Approved Applications</a></li>
+    <li><a th:classappend="${activeTab == 'reports'} ? 'active'" th:href="@{/reports}">Reports</a></li>
+  </ul>
+</nav>
+</body>
+</html>
